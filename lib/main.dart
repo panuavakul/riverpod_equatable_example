@@ -51,11 +51,14 @@ class MyHomePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final map = ref.watch(mapProviderProvider);
-    final map = ref.watch(mapFreezedProviderProvider);
+    // final map = ref.watch(mapProviderProvider);   //// <<<< This is the provider that return normal Map
+    final map = ref.watch(
+        mapFreezedProviderProvider); //// <<<< This is the provider that return freezed Map
     final controller = useTextEditingController();
 
     print(map);
+
+    /// <<<< If this is printed, it means that the Widget is rebuilt
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
