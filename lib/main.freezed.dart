@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'equal_map_wrapper.dart';
+part of 'main.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,28 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$EqualMapWrapper<T, A> {
+mixin _$FreezedMapWrapper<T, A> {
   Map<T, A> get map => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EqualMapWrapperCopyWith<T, A, EqualMapWrapper<T, A>> get copyWith =>
+  $FreezedMapWrapperCopyWith<T, A, FreezedMapWrapper<T, A>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EqualMapWrapperCopyWith<T, A, $Res> {
-  factory $EqualMapWrapperCopyWith(EqualMapWrapper<T, A> value,
-          $Res Function(EqualMapWrapper<T, A>) then) =
-      _$EqualMapWrapperCopyWithImpl<T, A, $Res, EqualMapWrapper<T, A>>;
+abstract class $FreezedMapWrapperCopyWith<T, A, $Res> {
+  factory $FreezedMapWrapperCopyWith(FreezedMapWrapper<T, A> value,
+          $Res Function(FreezedMapWrapper<T, A>) then) =
+      _$FreezedMapWrapperCopyWithImpl<T, A, $Res, FreezedMapWrapper<T, A>>;
   @useResult
   $Res call({Map<T, A> map});
 }
 
 /// @nodoc
-class _$EqualMapWrapperCopyWithImpl<T, A, $Res,
-        $Val extends EqualMapWrapper<T, A>>
-    implements $EqualMapWrapperCopyWith<T, A, $Res> {
-  _$EqualMapWrapperCopyWithImpl(this._value, this._then);
+class _$FreezedMapWrapperCopyWithImpl<T, A, $Res,
+        $Val extends FreezedMapWrapper<T, A>>
+    implements $FreezedMapWrapperCopyWith<T, A, $Res> {
+  _$FreezedMapWrapperCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -58,23 +58,23 @@ class _$EqualMapWrapperCopyWithImpl<T, A, $Res,
 }
 
 /// @nodoc
-abstract class _$$EqualMapWrapperImplCopyWith<T, A, $Res>
-    implements $EqualMapWrapperCopyWith<T, A, $Res> {
-  factory _$$EqualMapWrapperImplCopyWith(_$EqualMapWrapperImpl<T, A> value,
-          $Res Function(_$EqualMapWrapperImpl<T, A>) then) =
-      __$$EqualMapWrapperImplCopyWithImpl<T, A, $Res>;
+abstract class _$$FreezedMapWrapperImplCopyWith<T, A, $Res>
+    implements $FreezedMapWrapperCopyWith<T, A, $Res> {
+  factory _$$FreezedMapWrapperImplCopyWith(_$FreezedMapWrapperImpl<T, A> value,
+          $Res Function(_$FreezedMapWrapperImpl<T, A>) then) =
+      __$$FreezedMapWrapperImplCopyWithImpl<T, A, $Res>;
   @override
   @useResult
   $Res call({Map<T, A> map});
 }
 
 /// @nodoc
-class __$$EqualMapWrapperImplCopyWithImpl<T, A, $Res>
-    extends _$EqualMapWrapperCopyWithImpl<T, A, $Res,
-        _$EqualMapWrapperImpl<T, A>>
-    implements _$$EqualMapWrapperImplCopyWith<T, A, $Res> {
-  __$$EqualMapWrapperImplCopyWithImpl(_$EqualMapWrapperImpl<T, A> _value,
-      $Res Function(_$EqualMapWrapperImpl<T, A>) _then)
+class __$$FreezedMapWrapperImplCopyWithImpl<T, A, $Res>
+    extends _$FreezedMapWrapperCopyWithImpl<T, A, $Res,
+        _$FreezedMapWrapperImpl<T, A>>
+    implements _$$FreezedMapWrapperImplCopyWith<T, A, $Res> {
+  __$$FreezedMapWrapperImplCopyWithImpl(_$FreezedMapWrapperImpl<T, A> _value,
+      $Res Function(_$FreezedMapWrapperImpl<T, A>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -82,7 +82,7 @@ class __$$EqualMapWrapperImplCopyWithImpl<T, A, $Res>
   $Res call({
     Object? map = null,
   }) {
-    return _then(_$EqualMapWrapperImpl<T, A>(
+    return _then(_$FreezedMapWrapperImpl<T, A>(
       map: null == map
           ? _value._map
           : map // ignore: cast_nullable_to_non_nullable
@@ -93,8 +93,8 @@ class __$$EqualMapWrapperImplCopyWithImpl<T, A, $Res>
 
 /// @nodoc
 
-class _$EqualMapWrapperImpl<T, A> implements _EqualMapWrapper<T, A> {
-  const _$EqualMapWrapperImpl({required final Map<T, A> map}) : _map = map;
+class _$FreezedMapWrapperImpl<T, A> implements _FreezedMapWrapper<T, A> {
+  const _$FreezedMapWrapperImpl({required final Map<T, A> map}) : _map = map;
 
   final Map<T, A> _map;
   @override
@@ -106,14 +106,14 @@ class _$EqualMapWrapperImpl<T, A> implements _EqualMapWrapper<T, A> {
 
   @override
   String toString() {
-    return 'EqualMapWrapper<$T, $A>(map: $map)';
+    return 'FreezedMapWrapper<$T, $A>(map: $map)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EqualMapWrapperImpl<T, A> &&
+            other is _$FreezedMapWrapperImpl<T, A> &&
             const DeepCollectionEquality().equals(other._map, _map));
   }
 
@@ -124,19 +124,19 @@ class _$EqualMapWrapperImpl<T, A> implements _EqualMapWrapper<T, A> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EqualMapWrapperImplCopyWith<T, A, _$EqualMapWrapperImpl<T, A>>
-      get copyWith => __$$EqualMapWrapperImplCopyWithImpl<T, A,
-          _$EqualMapWrapperImpl<T, A>>(this, _$identity);
+  _$$FreezedMapWrapperImplCopyWith<T, A, _$FreezedMapWrapperImpl<T, A>>
+      get copyWith => __$$FreezedMapWrapperImplCopyWithImpl<T, A,
+          _$FreezedMapWrapperImpl<T, A>>(this, _$identity);
 }
 
-abstract class _EqualMapWrapper<T, A> implements EqualMapWrapper<T, A> {
-  const factory _EqualMapWrapper({required final Map<T, A> map}) =
-      _$EqualMapWrapperImpl<T, A>;
+abstract class _FreezedMapWrapper<T, A> implements FreezedMapWrapper<T, A> {
+  const factory _FreezedMapWrapper({required final Map<T, A> map}) =
+      _$FreezedMapWrapperImpl<T, A>;
 
   @override
   Map<T, A> get map;
   @override
   @JsonKey(ignore: true)
-  _$$EqualMapWrapperImplCopyWith<T, A, _$EqualMapWrapperImpl<T, A>>
+  _$$FreezedMapWrapperImplCopyWith<T, A, _$FreezedMapWrapperImpl<T, A>>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -6,7 +6,7 @@ part of 'main.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mapProviderHash() => r'024395f93de4cae8c366171e004a858e701618a8';
+String _$mapProviderHash() => r'6b374a0144e74365df074656a7c99a8c10f979b1';
 
 /// See also [mapProvider].
 @ProviderFor(mapProvider)
@@ -21,7 +21,7 @@ final mapProviderProvider = AutoDisposeProvider<Map<String, String>>.internal(
 
 typedef MapProviderRef = AutoDisposeProviderRef<Map<String, String>>;
 String _$mapFreezedProviderHash() =>
-    r'9d0a9a8749d8c9e65b9f1ffcc4fcd2463887b28a';
+    r'a205fb0c403a4ae0fc31d1f9f0ee9fc7b73e395e';
 
 /// See also [mapFreezedProvider].
 @ProviderFor(mapFreezedProvider)

@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_playground/equal_map_wrapper/equal_map_wrapper.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'main.g.dart';
+part 'main.freezed.dart';
+
+@freezed
+class FreezedMapWrapper<T, A> with _$FreezedMapWrapper {
+  const factory FreezedMapWrapper({
+    required Map<T, A> map,
+  }) = _FreezedMapWrapper;
+}
 
 @riverpod
 class MapStateNotifier extends _$MapStateNotifier {
@@ -21,12 +29,12 @@ class MapStateNotifier extends _$MapStateNotifier {
 @riverpod
 class MapFreezedStateNotifier extends _$MapFreezedStateNotifier {
   @override
-  EqualMapWrapper<String, String> build() {
-    return const EqualMapWrapper(map: {});
+  FreezedMapWrapper<String, String> build() {
+    return const FreezedMapWrapper(map: {});
   }
 
   void update(Map<String, String> newValue) {
-    state = EqualMapWrapper(map: {...newValue});
+    state = FreezedMapWrapper(map: {...newValue});
   }
 }
 
@@ -36,7 +44,8 @@ Map<String, String> mapProvider(MapProviderRef ref) {
 }
 
 @riverpod
-EqualMapWrapper<String, String> mapFreezedProvider(MapFreezedProviderRef ref) {
+FreezedMapWrapper<String, String> mapFreezedProvider(
+    MapFreezedProviderRef ref) {
   return ref.watch(mapFreezedStateNotifierProvider);
 }
 
@@ -46,37 +55,68 @@ void main() {
   ));
 }
 
-class MyHomePage extends HookConsumerWidget {
-  const MyHomePage({super.key});
+class MyHome extends HookConsumerWidget {
+  const MyHome({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final map = ref.watch(mapProviderProvider);   //// <<<< This is the provider that return normal Map
     final map = ref.watch(
+        mapProviderProvider); //// <<<< This is the provider that return normal Map
+    final mapFreezed = ref.watch(
         mapFreezedProviderProvider); //// <<<< This is the provider that return freezed Map
     final controller = useTextEditingController();
 
-    print(map);
+    const snackBar = SnackBar(content: Text('Rebuilding Widget'));
 
-    /// <<<< If this is printed, it means that the Widget is rebuilt
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        TextField(
-          controller: controller,
-        ),
-        ElevatedButton(
-          onPressed: () {
-            ref
-                .read(mapFreezedStateNotifierProvider.notifier)
-                .update({'1': controller.text});
-            ref
-                .read(mapStateNotifierProvider.notifier)
-                .update({'1': controller.text});
-          },
-          child: const Text('Update Value'),
-        ),
-      ],
+    ref.listen(mapProviderProvider, (before, after) {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    });
+
+    ref.listen(mapFreezedProviderProvider, (before, after) {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    });
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            'Map',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Text(map.toString()),
+          const Text(
+            'Freezed Map',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Text(mapFreezed.toString()),
+          const Divider(),
+          TextField(
+            controller: controller,
+          ),
+          const Divider(),
+          ElevatedButton(
+            onPressed: () {
+              ref
+                  .read(mapStateNotifierProvider.notifier)
+                  .update({'1': controller.text});
+            },
+            child: const Text('Update Map Value'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              ref
+                  .read(mapFreezedStateNotifierProvider.notifier)
+                  .update({'1': controller.text});
+            },
+            child: const Text('Update Freezed Map Value'),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -88,7 +128,6 @@ class MyApp extends StatelessWidget {
     return null;
   }
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -98,7 +137,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const Scaffold(
-        body: MyHomePage(),
+        body: MyHome(),
       ),
     );
   }
